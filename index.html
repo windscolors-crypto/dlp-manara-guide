@@ -36,6 +36,8 @@ header{background:var(--card);border-bottom:1px solid var(--line)}
 header .wrap{padding-top:22px;padding-bottom:18px}
 h1{margin:0;font-size:clamp(1.35rem,3.6vw,1.9rem);font-weight:800;color:var(--brand);letter-spacing:-.01em}
 .sub{margin:4px 0 0;color:var(--muted);font-size:.98rem}
+.login{margin:10px 0 0;display:inline-block;background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--ink);border:1px solid color-mix(in srgb,var(--accent) 40%,transparent);padding:6px 12px;border-radius:10px;font-size:.92rem}
+.lock{font-size:.82rem;color:var(--accent);font-weight:700}
 .panel{position:sticky;top:0;z-index:5;background:var(--bg);padding:14px 0 10px;border-bottom:1px solid var(--line)}
 .search{display:flex;gap:8px}
 .search input{flex:1;min-width:0;font:inherit;font-size:1.05rem;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);outline:none}
@@ -82,6 +84,7 @@ footer{color:var(--muted);font-size:.85rem;padding:24px 0 40px}
 <header><div class="wrap">
   <h1>دليل محتوى منصتي DLP ومنارة</h1>
   <p class="sub">الأونروا – إقليم الأردن · الصفوف 6–10 · مع مطابقة كل درس للمنهاج الحالي 2026/2027</p>
+  <p class="login">🔑 تذكير: محتوى <b>منارة</b> يحتاج تسجيل الدخول بحساب الأونروا (unrwa-edu.org) قبل فتح الدرس.</p>
 </div></header>
 
 <div class="panel"><div class="wrap">
@@ -176,7 +179,7 @@ function render(){
           <span class="b">الفصل ${d.sem===1?'الأول':'الثاني'}</span>
           <span class="b ${d.m}">${ML[d.m]}</span>
         </div>
-        <div class="type">${esc(d.ty)}</div>
+        <div class="type">${esc(d.ty)}${d.p==='MN'?' · <span class="lock">🔑 يتطلب الدخول بحساب الأونروا</span>':''}</div>
       </div>
       <a class="open" href="https://keeplearning.unrwa.org/?p=${d.id}" target="_blank" rel="noopener">افتح الدرس</a>
       ${d.tech?`<div class="tech">⚠ ${esc(d.tech)}</div>`:''}

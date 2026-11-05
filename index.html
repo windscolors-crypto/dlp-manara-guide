@@ -156,6 +156,7 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':
 
 function cp(b,u){const t=b.textContent;const ok=()=>{b.textContent='✓ تم النسخ';setTimeout(()=>b.textContent=t,1800)};
  if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(u).then(ok,()=>prompt('انسخ/ي الرابط:',u))}else{prompt('انسخ/ي الرابط:',u)}}
+function cpl(b,id){cp(b,'١. سجّلي الدخول أولاً: https://keeplearning.unrwa.org/login/\n٢. افتحي الدرس: https://keeplearning.unrwa.org/?p='+id)}
 function render(){
   const terms = norm(st.q).split(' ').filter(Boolean);
   let rows = DATA.filter(d =>
@@ -191,7 +192,7 @@ function render(){
       </div>
       <div class="actions">
         <a class="open" href="https://keeplearning.unrwa.org/?p=${d.id}" target="_blank" rel="noopener">افتح الدرس</a>
-        <button class="vid" type="button" onclick="cp(this,'https://keeplearning.unrwa.org/?p=${d.id}')">🔗 نسخ رابط الدرس لتيمز</button>
+        <button class="vid" type="button" onclick="cpl(this,'${d.id}')">🔗 نسخ رابط الدرس لتيمز</button>
         ${d.mp4?`<a class="vid" href="${esc(d.mp4)}" target="_blank" rel="noopener" download>⬇ تنزيل الفيديو (بدون إنترنت)</a><span class="vnote">الفيديو المنزَّل بلا أسئلة تفاعلية ولا يُحسب في إحصاءات المنصة</span>`:''}
         ${d.yt?`<a class="vid" href="${esc(d.yt)}" target="_blank" rel="noopener">▶ الفيديو على يوتيوب</a>`:''}
         ${d.p==='DLP'?`<a class="alt" href="https://keeplearning.unrwa.org/cat_jordan/jfo-${d.c}/" target="_blank" rel="noopener">بدون تسجيل: صفحة المادة</a>`:''}

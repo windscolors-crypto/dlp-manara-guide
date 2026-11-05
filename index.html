@@ -191,8 +191,9 @@ function render(){
       </div>
       <div class="actions">
         <a class="open" href="https://keeplearning.unrwa.org/?p=${d.id}" target="_blank" rel="noopener">افتح الدرس</a>
-        ${d.mp4?`<a class="vid" href="${esc(d.mp4)}" target="_blank" rel="noopener" download>⬇ تنزيل الفيديو</a><button class="vid" type="button" onclick="cp(this,'${esc(d.mp4)}')">🔗 نسخ رابط الفيديو لتيمز</button><span class="vnote">فيديو فقط، بدون الأسئلة التفاعلية · يعمل دون تسجيل دخول</span>`:''}
-        ${d.yt?`<a class="vid" href="${esc(d.yt)}" target="_blank" rel="noopener">▶ فتح على يوتيوب</a><button class="vid" type="button" onclick="cp(this,'${esc(d.yt)}')">🔗 نسخ رابط يوتيوب لتيمز</button><span class="vnote">فيديو فقط، بدون الأسئلة التفاعلية</span>`:''}
+        <button class="vid" type="button" onclick="cp(this,'https://keeplearning.unrwa.org/?p=${d.id}')">🔗 نسخ رابط الدرس لتيمز</button>
+        ${d.mp4?`<a class="vid" href="${esc(d.mp4)}" target="_blank" rel="noopener" download>⬇ تنزيل الفيديو (بدون إنترنت)</a><span class="vnote">الفيديو المنزَّل بلا أسئلة تفاعلية ولا يُحسب في إحصاءات المنصة</span>`:''}
+        ${d.yt?`<a class="vid" href="${esc(d.yt)}" target="_blank" rel="noopener">▶ الفيديو على يوتيوب</a>`:''}
         ${d.p==='DLP'?`<a class="alt" href="https://keeplearning.unrwa.org/cat_jordan/jfo-${d.c}/" target="_blank" rel="noopener">بدون تسجيل: صفحة المادة</a>`:''}
       </div>
       ${d.tech?`<div class="tech">⚠ ${esc(d.tech)}</div>`:''}
